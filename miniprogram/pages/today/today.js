@@ -7,6 +7,21 @@ Page({
    * 页面的初始数据
    */
   data: {
+    show: false,
+        buttons: [
+            {
+                type: 'default',
+                className: '',
+                text: '辅助操作',
+                value: 0
+            },
+            {
+                type: 'primary',
+                className: '',
+                text: '主操作',
+                value: 1
+            }
+        ],
     message:'Hello MiNA',
     monthday: "",
     yueRi: "",
@@ -82,7 +97,14 @@ Page({
   onShareAppMessage: function () {
 
   },
-
+  open: function () {
+    this.setData({
+        show: true
+    })
+},
+  buttontap(e) {
+      console.log(e.detail)
+  },
    //获取月日
    getTime() {
     let date = new Date()

@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    date: '2015-01-01', 
     message:'Hello MiNA',
     yueRi: "",
     tasks: null
@@ -16,15 +17,19 @@ Page({
    */
   onLoad: function (options) {
     let monthDay = this.options.id
-    let month = this.getMonth()
+    let d = new Date()
+    var day=d.getDate()
+    var month=d.getMonth() + 1
+    var year=d.getFullYear()
     let yueRi = this.options.yr
-
+    let date = year + "-" + month + "-" + day
     today.where({
       day: monthDay,
       cover: false
     }).get().then(res=>{
       console.log(res.data)
       this.setData({
+        date: date,
         yueRi: yueRi,
         tasks: res.data
       })

@@ -17,8 +17,6 @@
     <navigator url="../detail/detail?id={{monthDay}}&yr={{yueRi}}">
       <button>查看更多</button>
     </navigator>
-    <navigator url="../detail/detail">
-      <button>选择日期</button>
-    </navigator>
   </view>
+ 
 </view>
