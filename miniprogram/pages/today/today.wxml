@@ -1,0 +1,24 @@
+<!--pages/today/today.wxml-->
+<view class="page">
+  <view class="page__hd">
+    <view wx:for="{{tasks}}" wx:key="key">
+      <view class="page__title">{{ item.year }}年</view>
+      <view class="page__title">{{yueRi}}</view>
+      <view class="page__title">{{ item.title }}</view>
+     <image src="{{ item.pic_share }}" mode="aspectFit"></image>
+      <view class="page__desc">{{ item.desc }}</view>
+    </view>
+  </view>
+  <view class="page__hd">
+    <view class="page__desc">数据来源：百度百科</view>
+  </view>
+
+  <view>
+    <navigator url="../detail/detail?id={{monthDay}}&yr={{yueRi}}">
+      <button>查看更多</button>
+    </navigator>
+    <navigator url="../detail/detail">
+      <button>选择日期</button>
+    </navigator>
+  </view>
+</view>

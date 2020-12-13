@@ -1,0 +1,17 @@
+<!--pages/lastyear/lastyear.wxml-->
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">2019年{{yueRi}}</view>
+    <view wx:for="{{tasks}}" wx:key="key">
+      <view class="page__title">{{ item.eventname }}</view>
+     <image src="https://ef.zhiweidata.com/img/event.do?name={{ item.img }}" mode="aspectFit"></image>
+      <view class="page__desc">{{ item.desc }}</view>
+      <view class="page__desc">类型:{{ item.type }}</view>
+      <view class="page__desc">标签:{{ item.tag }}</view>
+    </view>
+  </view>
+
+  <view class="page__hd">
+    <view class="page__desc">数据来源：知微事见</view>
+  </view>
+</view>

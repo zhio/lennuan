@@ -1,0 +1,9 @@
+<view class="page">
+  <view wx:for="{{tasks}}">
+  <view class="page__hd">
+    <view class="page__title">{{ item.year}}年{{yueRi}}</view>
+    <view class="page__title">{{ item.title }}</view>
+    <view class="page__desc">{{ item.desc }}...</view>
+    </view>
+  </view>
+</view>
