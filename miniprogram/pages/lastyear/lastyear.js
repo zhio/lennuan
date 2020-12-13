@@ -1,37 +1,105 @@
 // pages/today/today.js
 const db = wx.cloud.database();
 const today = db.collection('zhiwei');
+const _ = db.command
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    date:'',
     monthday: "",
     yueRi: "",
-    tasks: null
-  },
-
+    tasks: null,
+    list: [
+        {
+            id: '2019',
+            name: '2019年',
+            open: false,
+            pages: []
+        },
+        {
+            id: '2018',
+            name: '2018年',
+            open: false,
+            pages: []
+        },
+        {
+            id: '2017',
+            name: '2017年',
+            open: false,
+            pages: []
+        },
+        {
+            id: '2016',
+            name: '2016年',
+            open: false,
+            pages: []
+        },
+        {
+            id: '2015',
+            name: '2015年',
+            open: false,
+            pages: []
+        }
+    ]
+},
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    let month = this.getMonth()
+  onLoad: function () {
+       
     let monthDay = this.getTime()
     let yueRi = this.getFullTime()
-    let lasttoday = this.getlastyeartoday()
+    let yearList = [2019,2018,2017,2016,2015]
+    let dayList = []
+    for (let i = 0, len = yearList.length; i < len; ++i){
+      dayList.push(this.getlastyeartoday(yearList[i]))
+    }
     today.where({
-      startTime: lasttoday,
+      startTime: _.in (dayList)
     }).get().then(res=>{
       console.log(res.data)
+      for (let j =0; j<res.data.length;++j){
+        if (res.data[j].startTime == dayList[0]){
+          this.data.list[0].pages.push(res.data[j])
+        }
+        if (res.data[j].startTime == dayList[1]){
+          this.data.list[1].pages.push(res.data[j])
+        }
+        if (res.data[j].startTime == dayList[2]){
+          this.data.list[2].pages.push(res.data[j])
+        }
+        if (res.data[j].startTime == dayList[3]){
+          this.data.list[3].pages.push(res.data[j])
+        }
+        if (res.data[j].startTime == dayList[4]){
+          this.data.list[4].pages.push(res.data[j])
+        }
+      }
       this.setData({
+        date :date,
         monthDay: monthDay,
         yueRi: yueRi,
-        tasks: res.data
+        list:  this.data.list
       })
     })
   },
-
+  kindToggle: function (e) {
+    const id = e.currentTarget.id,
+    list = this.data.list
+    for (let i = 0, len = list.length; i < len; ++i) {
+        if (list[i].id == id) {
+            list[i].open = !list[i].open
+        } else {
+            list[i].open = false
+        }
+    }
+    this.setData({
+        list: list
+    })
+},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -80,11 +148,11 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getlastyeartoday(){
+  getlastyeartoday(keynum){
     let date = new Date()
     let month = date.getMonth() + 1
     let day = date.getDate()
-    let lasttoday = new Date(2019,month-1,day)
+    let lasttoday = new Date(keynum,month-1,day)
     let timestamp = lasttoday.getTime()
     console.log(timestamp)
     return timestamp

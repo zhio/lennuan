@@ -68,6 +68,12 @@
         {
           "name": "pages/detail/detail",
           "pathName": "pages/detail/detail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/article/article",
+          "pathName": "pages/article/article",
           "scene": null
         }
       ]

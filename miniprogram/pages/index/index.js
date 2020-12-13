@@ -1,7 +1,9 @@
+const { GRID_DEMO_URL } = getApp().globalData
+const app = getApp()
 Page({
   data: {
       inputShowed: false,
-      inputVal: ""
+      inputVal: "",
   },
   onLoad() {
       this.setData({

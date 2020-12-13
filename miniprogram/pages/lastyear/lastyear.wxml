@@ -1,17 +1,28 @@
-<!--pages/lastyear/lastyear.wxml-->
 <view class="page">
   <view class="page__hd">
-    <view class="page__title">2019年{{yueRi}}</view>
-    <view wx:for="{{tasks}}" wx:key="key">
-      <view class="page__title">{{ item.eventname }}</view>
-     <image src="https://ef.zhiweidata.com/img/event.do?name={{ item.img }}" mode="aspectFit"></image>
-      <view class="page__desc">{{ item.desc }}</view>
-      <view class="page__desc">类型:{{ item.type }}</view>
-      <view class="page__desc">标签:{{ item.tag }}</view>
-    </view>
-  </view>
-
-  <view class="page__hd">
-    <view class="page__desc">数据来源：知微事见</view>
-  </view>
+          <view class="page__title">去年今日</view>
+          <view class="page__desc">记录过去几年中发生的快被遗忘的事情</view>
+      </view>
+      <view class="page__bd page__bd_spacing">
+          <view class="kind-list">
+              <block wx:for="{{list}}" wx:key="id">
+                  <view class="kind-list__item">
+                      <view id="{{item.id}}" class="weui-flex kind-list__item-hd {{item.open ? 'kind-list__item-hd_show' : ''}}" bindtap="kindToggle">
+                          <view class="weui-flex__item">{{item.name}}</view>
+                          <view slot="footer">{{item.pages.length}}条</view>
+                      </view>
+                      <view class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}">
+                          <view class="weui-cells {{item.open ? 'weui-cells_show' : ''}}">
+                              <block wx:for="{{item.pages}}" wx:for-item="page" wx:key="*this">
+                                  <navigator url="article/article?id={{page.eventid}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active weui-active">
+                                      <view class="weui-cell__desc">{{page.eventname}}</view>
+                                      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                                  </navigator>
+                              </block>
+                          </view>
+                      </view>
+                  </view>
+              </block>
+          </view>
+      </view>
 </view>
