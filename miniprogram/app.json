@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/today/today",
     "pages/detail/detail",
-    "pages/lastyear/lastyear"
+    "pages/lastyear/lastyear",
+    "pages/article/article"
    
   ],
   "window": {
