@@ -3,7 +3,7 @@
     <view class="container">
       <view class="uploader">
         <navigator url="../today/today" open-type="navigate" class="uploader-text">
-          <text>历史上的今天</text>
+          <text>历史上的今天。</text>
         </navigator>
       </view>
     </view>
