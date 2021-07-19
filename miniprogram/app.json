@@ -4,8 +4,8 @@
     "pages/today/today",
     "pages/detail/detail",
     "pages/lastyear/lastyear",
-    "pages/article/article"
-   
+    "pages/article/article",
+    "pages/weather/weather"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -16,7 +16,7 @@
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2",
-    "useExtendedLib": {
-      "weui": true
-    }
+  "useExtendedLib": {
+    "weui": true
+  }
 }

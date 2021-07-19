@@ -1,8 +1,1 @@
-<view class="page" data-weui-theme="{{theme}}">
-
-    <view class="page__ft">
-        <view class="ft-img-cnt" bindtap="themeToggle">
-            <image src="images/icon_footer.png" style="width: 84px; height: 19px;"></image>
-        </view>
-    </view>
-</view>
+<button bindtap='onClick'>云函数发送请求</button>
