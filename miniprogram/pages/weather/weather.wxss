@@ -1,9 +1,9 @@
 /**index.wxss**/
 page {
-  background: #F1F1F1;
+  background: #F6F6F6;
 }
 .scroll {
-  background: #fff;
+
   margin-bottom: 20rpx;
   padding: 30rpx 20rpx;
 }
@@ -35,7 +35,7 @@ page {
 }
 .weather-app {
   font-size: 28rpx;
-  color: #333;
+  color: #626262;
   position: relative;
   z-index: 10;
   padding: 20rpx;
@@ -45,11 +45,15 @@ page {
   flex-direction: column;
   align-items: center;
   padding: 80rpx 30rpx;
-  background: #fff;
+  /* background: #fff; */
   margin-bottom: 20rpx;
   position: relative;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2) ;
 }
+.header_img {
+  width: 185rpx;
+  height: 185rpx;
+}
+
 .header .add {
   position: absolute;
   top: 30rpx;

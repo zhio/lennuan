@@ -5,6 +5,7 @@
       <image src="image/location/location-arrow.svg"></image>
       <text class="city">{{location}}</text>
     </view>
+    <image class="header_img"  src="./image/100.svg"></image>
     <view class="temperature">
       {{localTemperature}}
       <span>˚</span>
@@ -117,6 +118,6 @@
   </view>
   <view class="footer">Written by XMit︎</view>
 </view>
-<view hidden="{{!show}}" class="loding">
+<!-- <view hidden="{{!show}}" class="loding">
   <image src="./image/cloud.svg"></image>
-</view>
+</view> -->
