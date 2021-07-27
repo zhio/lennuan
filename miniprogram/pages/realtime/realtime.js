@@ -74,11 +74,7 @@ Page({
       trav: "./image/life/trav.svg",
       comf: "./image/life/comf.svg",
     },
-    alert:{},
     realtime: {},
-    minutely:{},
-    hourly:{},
-    daily:{},
     updatetime: "",
     detail: {},
     detailIcon: {
@@ -170,22 +166,9 @@ Page({
   },
   getCaiyunWeather(x,y) {
     wx.request({
-      url: 'https://api.caiyunapp.com/v2.5/'+token+'/'+x+','+y+'/weather.json?alert=true',
+      url: 'https://api.caiyunapp.com/v2.5/'+token+'/'+x+','+y+'/weather.json',
       success: (res)=>{
         console.log(res)
-        let url =  'https://api.caiyunapp.com/v2.5/'+token+'/'+x+','+y+'/weather.json?alert=true'
-        console.log(url)
-        let updateTime = res.data.server_time
-        let weatherInfo = res.data.result
-        this.setData({
-          alert: weatherInfo.alert,
-          realtime: weatherInfo.realtime,
-          minutely: weatherInfo.minutely,
-          hourly: weatherInfo.hourly,
-          daily:weatherInfo.daily,
-          updatetime: time.formatTime(updateTime,'Y.M.D h:m:s')
-        })
-
       },
       fail: ()=>{
         this.add()

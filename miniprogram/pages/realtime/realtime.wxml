@@ -1,5 +1,5 @@
 <view>{{location}}</view>
-<view>最近更新时间：{{alert.content}}</view>
+<view>最近更新时间：{{updatetime}}</view>
 <view>{{summary}}</view>
 <view>温度：{{localTemperature}}℃</view>
 <view>体感温度：{{realtime.apparent_temperature}}℃</view>
