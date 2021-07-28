@@ -1,24 +1,39 @@
-<view>{{location}}</view>
-<view>最近更新时间：{{alert.content}}</view>
-<view>{{summary}}</view>
-<view>温度：{{localTemperature}}℃</view>
-<view>体感温度：{{realtime.apparent_temperature}}℃</view>
-<view>气压：{{realtime.pressure}}</view>
-<view>相对湿度：{{realtime.humidity}}</view>
+<view class="page__hd">
+  <view class="page__title ">{{location}}</view>
+  <view class="page__des">更新时间：{{updatetime}}</view>
+  <view>体感温度：{{realtime.apparent_temperature}}℃</view>
+  <view class="page__bd page__bd_spacing">
+		<view class="weui-flex header">
+    	<view class="weui-flex__item"><view class="placeholder img">
+        <image class="img" src="{{ tianqitubiao }}"></image>
+      </view></view>
+			<view class="weui-flex__item"><view class="placeholder">
+        <view class="temperature">{{localTemperature}}℃</view>
+        <view class="summary">{{summary}}</view></view>
+      </view>
+		</view>
+	</view>
+</view>
+<view class="scroll">
+    <scroll-view scroll-x="true">
+      <view class="scroll-x">
+        <view wx:for-items="{{hourly.temperature}}" wx:key="name" class="item">
+          <view class="item-hd">{{util.sub(item.datetime)}}</view>
+          <!-- <image class="img" src="{{ item.condCode }}"></image> -->
+          <text class="item-bd">{{item.value}}˚</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
 
-<view>风向：{{realtime.wind.direction}}</view>
-<view>风速：{{realtime.wind.speed}}</view>
+<wxs module="util">
 
-<view>距离{{realtime.precipitation.nearest.distance}}千米正在下雨，强度为{{realtime.precipitation.nearest.intensity}}</view>
-<view>云量：{{realtime.cloudrate}}</view>
-<view>向下短波辐射通量：{{realtime.dswrf}}</view>
-<view>能见度：{{realtime.visibility}}</view>
+var sub = function(val) {
 
-<view>舒适度指数{{realtime.life_index.comfort.index}}及其自然语言描述{{realtime.life_index.comfort.desc}}</view>
-<view>紫外线指数{{realtime.life_index.ultraviolet.index}}及其自然语言描述{{realtime.life_index.ultraviolet.desc}}</view>
+    return val.slice(-11,-6)
 
-<view>pm25：{{realtime.air_quality.pm25}}</view>
-<view>pm10：{{realtime.air_quality.pm10}}</view>
-<view>臭氧：{{realtime.air_quality.o3}}</view>
-<view>空气质量指数：{{realtime.air_quality.aqi.chn}}</view>
-<view>空气质量：{{realtime.air_quality.description.chn}}</view>
+}
+
+module.exports.sub = sub;
+
+</wxs>
